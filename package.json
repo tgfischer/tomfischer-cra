@@ -1,0 +1,14 @@
+{
+  "name": "tomfischer",
+  "author": "Tom Fischer",
+  "license": "ISC",
+  "version": "1.0.0",
+  "description": "My portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "lerna": "^3.10.7"
+  }
+}

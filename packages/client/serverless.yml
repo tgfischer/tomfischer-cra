@@ -1,0 +1,90 @@
+service: tom-fischer
+
+plugins:
+  - serverless-plugin-cloudformation-cross-region-variables
+  - serverless-finch
+  - serverless-build-client
+
+custom:
+  client:
+    bucketName: ${self:custom.s3.bucketName}
+    distributionFolder: build
+    indexDocument: index.html
+    errorDocument: index.html
+  s3:
+    bucketName: tom-fischer-client-${self:provider.stage}
+  domain:
+    name: tomfischer.ca
+    certificateArn: arn:aws:acm:us-east-1:899289457458:certificate/ed1dcb70-3d30-4fbe-9851-288ccdd0355b
+  cloudFront:
+    id: TomFischerClient
+    hostedZoneId: Z2FDTNDATAQYW2
+  route53:
+    hostedZoneName: tomfischer.ca
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ca-central-1
+  stage: ${opt:stage, "prod"}
+  environment:
+    REACT_APP_BACKEND_ENDPOINT: ${cf:tom-fischer-backend-${self:provider.stage}.ServiceEndpoint}
+    REACT_APP_USER_SERVICE_ENDPOINT: ${cfcr:us-east-1:tom-fischer-users-${self:provider.stage}:ServiceEndpoint}
+
+resources:
+  Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.s3.bucketName}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: ${self:custom.client.indexDocument}
+          ErrorDocument: ${self:custom.client.errorDocument}
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName: ${self:custom.client.bucketName}.s3.amazonaws.com
+              Id: ${self:custom.cloudFront.id}
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+          Enabled: 'true'
+          Aliases:
+             - ${self:custom.domain.name}
+          DefaultRootObject: index.html
+          CustomErrorResponses:
+            - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - DELETE
+              - GET
+              - HEAD
+              - OPTIONS
+              - PATCH
+              - POST
+              - PUT
+            TargetOriginId: ${self:custom.cloudFront.id}
+            ForwardedValues:
+              QueryString: "true"
+              Cookies:
+                Forward: none
+            ViewerProtocolPolicy: redirect-to-https
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.domain.certificateArn}
+            SslSupportMethod: sni-only
+    Route53RecordSet:
+      Type: AWS::Route53::RecordSet
+      Properties:
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt: [ CloudFrontDistribution, DomainName ]
+          HostedZoneId: ${self:custom.cloudFront.hostedZoneId}
+        HostedZoneName: ${self:custom.domain.name}.
+        Name: ${self:custom.domain.name}
+        Type: 'A'
