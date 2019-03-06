@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["plugin:prettier/recommended"],
+  extends: ["plugin:prettier/recommended", "eslint:recommended"],
   plugins: ["prettier"],
   parserOptions: {
     sourceType: "module",
@@ -9,9 +9,9 @@ module.exports = {
     es6: true
   },
   rules: {
-    "no-undef": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": ["error", { ignoreRestSiblings: true }],
     quotes: ["error", "double"],
+    "no-console": "warn",
     "prettier/prettier": "error"
   }
 };

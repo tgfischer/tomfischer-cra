@@ -21,8 +21,8 @@ const styles = {
 const Grades = ({ title, classes, courses }) => (
   <Paper className={classes.root} elevation={5}>
     <div className={classes.container}>
-      <Typography variant="display1">{title}</Typography>
-      <Typography variant="subheading" className={classes.subheading}>
+      <Typography variant="h4">{title}</Typography>
+      <Typography variant="subtitle1" className={classes.subheading}>
         {`Overall average: ${(
           courses.reduce((sum, { mark, weight }) => sum + mark * weight, 0) /
           courses.reduce((sum, { weight }) => sum + weight, 0)

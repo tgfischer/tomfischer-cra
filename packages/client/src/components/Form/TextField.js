@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withFormsy } from "formsy-react";
-import uuid from "uuid/v4";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -66,7 +65,7 @@ class ControlledTextField extends Component {
         />
         {!isInputValid &&
           getErrorMessages().map(message => (
-            <Typography key={uuid()} className={classes.error} variant="body1">
+            <Typography key={message} className={classes.error}>
               {getErrorMessage()}
             </Typography>
           ))}

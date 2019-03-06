@@ -1,32 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Suspense, lazy } from "react";
 
-import Education from "../../components/Education";
-import * as selectors from "./selectors";
-import { fetchTranscript } from "./actions";
+import Loading from "../../components/Loading";
 
-class EducationContainer extends Component {
-  async componentDidMount() {
-    if (this.props.transcript) {
-      return;
-    }
+const EducationContainer = lazy(() => import("./EducationContainer"));
 
-    await this.props.fetchTranscript();
-  }
-
-  render() {
-    return <Education {...this.props} />;
-  }
-}
-
-const mapStateToProps = state => ({
-  transcript: selectors.getTranscript(state),
-  isFetching: selectors.getIsFetching(state)
-});
-
-export default connect(
-  mapStateToProps,
-  {
-    fetchTranscript
-  }
-)(EducationContainer);
+export default props => (
+  <Suspense fallback={<Loading />}>
+    <EducationContainer {...props} />
+  </Suspense>
+);

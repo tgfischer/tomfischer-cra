@@ -1,8 +1,8 @@
 const router = require("express").Router({ mergeParams: true });
 const HttpStatus = require("http-status-codes");
 const asyncHandler = require("express-async-handler");
-const middleware = require("tom-fischer-middleware");
-const joi = require("tom-fischer-joi");
+const middleware = require("@tomfischer/middleware");
+const joi = require("@tomfischer/joi");
 
 const UserService = require("../services/UserService");
 

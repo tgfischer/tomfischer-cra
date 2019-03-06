@@ -19,34 +19,33 @@ const styles = {
   }
 };
 
-const Sidebar = ({ classes, isOpen, openSidebar, closeSidebar }) => (
+const Sidebar = ({ classes, isOpen, closeSidebar }) => (
   <SwipeableDrawer open={isOpen} onClose={closeSidebar}>
     <List className={classes.list}>
-      {constants.pages.map(
-        ({ path, name }) =>
-          path.startsWith("https://") ? (
-            <ListItem
-              key={path}
-              component="a"
-              href={path}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeSidebar}
-              button
-            >
-              <ListItemText className={classes.listItemText} primary={name} />
-            </ListItem>
-          ) : (
-            <ListItem
-              key={path}
-              component={Link}
-              to={path}
-              onClick={closeSidebar}
-              button
-            >
-              <ListItemText className={classes.listItemText} primary={name} />
-            </ListItem>
-          )
+      {constants.pages.map(({ path, name }) =>
+        path.startsWith("https://") ? (
+          <ListItem
+            key={path}
+            component="a"
+            href={path}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeSidebar}
+            button
+          >
+            <ListItemText className={classes.listItemText} primary={name} />
+          </ListItem>
+        ) : (
+          <ListItem
+            key={path}
+            component={Link}
+            to={path}
+            onClick={closeSidebar}
+            button
+          >
+            <ListItemText className={classes.listItemText} primary={name} />
+          </ListItem>
+        )
       )}
     </List>
   </SwipeableDrawer>

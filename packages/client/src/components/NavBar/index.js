@@ -41,37 +41,27 @@ const NavBar = ({ classes, openSidebar, title }) => (
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <Typography
-              className={classes.flex}
-              variant="title"
-              color="inherit"
-            >
+            <Typography className={classes.flex} variant="h6" color="inherit">
               {title}
             </Typography>
             <Hidden smDown>
-              {constants.pages.map(
-                ({ path, name }) =>
-                  path.startsWith("https://") ? (
-                    <Button
-                      key={path}
-                      component="a"
-                      href={path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="inherit"
-                    >
-                      {name}
-                    </Button>
-                  ) : (
-                    <Button
-                      key={path}
-                      component={Link}
-                      to={path}
-                      color="inherit"
-                    >
-                      {name}
-                    </Button>
-                  )
+              {constants.pages.map(({ path, name }) =>
+                path.startsWith("https://") ? (
+                  <Button
+                    key={path}
+                    component="a"
+                    href={path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="inherit"
+                  >
+                    {name}
+                  </Button>
+                ) : (
+                  <Button key={path} component={Link} to={path} color="inherit">
+                    {name}
+                  </Button>
+                )
               )}
             </Hidden>
           </Grid>

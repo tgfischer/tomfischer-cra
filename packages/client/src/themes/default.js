@@ -4,18 +4,21 @@ import blue from "@material-ui/core/colors/blue";
 import grey from "@material-ui/core/colors/grey";
 
 export default createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
   overrides: {
     MuiTypography: {
-      title: {
+      h6: {
         textTransform: "uppercase"
       },
-      display1: {
+      h4: {
         textTransform: "uppercase"
       },
-      display2: {
+      h3: {
         textTransform: "uppercase"
       },
-      body2: {
+      body1: {
         textTransform: "uppercase"
       }
     },
@@ -24,8 +27,8 @@ export default createMuiTheme({
         backgroundColor: grey[50]
       }
     },
-    MuiButton: {
-      fab: {
+    MuiFab: {
+      root: {
         position: "fixed",
         bottom: "1em",
         right: "1em"

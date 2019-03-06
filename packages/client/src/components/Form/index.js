@@ -6,12 +6,10 @@ import TextField from "./TextField";
 import SubmitButton from "./SubmitButton";
 
 const renderChildren = ({ children, isFormValid }) =>
-  React.Children.map(
-    children,
-    child =>
-      child.type === SubmitButton
-        ? React.cloneElement(child, { isFormValid })
-        : child
+  React.Children.map(children, child =>
+    child.type === SubmitButton
+      ? React.cloneElement(child, { isFormValid })
+      : child
   );
 
 class Form extends PureComponent {

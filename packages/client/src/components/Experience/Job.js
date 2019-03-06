@@ -33,8 +33,8 @@ const Job = ({ job, classes }) => (
     <div className={classes.container}>
       <Grid container spacing={24} alignItems="center">
         <Grid item xs={12} sm={9}>
-          <Typography variant="display1">{job.company}</Typography>
-          <Typography variant="body2">
+          <Typography variant="h4">{job.company}</Typography>
+          <Typography variant="body1">
             {job.startDate} - {job.endDate}
           </Typography>
           <List>
@@ -43,7 +43,7 @@ const Job = ({ job, classes }) => (
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary={detail} />
+                <ListItemText primary={<Typography>{detail}</Typography>} />
               </ListItem>
             ))}
           </List>

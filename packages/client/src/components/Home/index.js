@@ -1,9 +1,11 @@
-import React from "react";
-import Loadable from "react-loadable";
+import React, { Suspense, lazy } from "react";
 
 import Loading from "../Loading";
 
-export default Loadable({
-  loader: () => import("./Home"),
-  loading: () => <Loading />
-});
+const Home = lazy(() => import("./Home"));
+
+export default props => (
+  <Suspense fallback={<Loading />}>
+    <Home {...props} />
+  </Suspense>
+);

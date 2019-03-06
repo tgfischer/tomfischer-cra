@@ -4,9 +4,11 @@ import {
   FETCH_TRANSCRIPT_FAILURE
 } from "./constants";
 
-const initialState = {};
+export const initialState = {
+  isFetching: false
+};
 
-const reducer = (state = initialState, action) => {
+export default (state, action) => {
   switch (action.type) {
     case FETCH_TRANSCRIPT_REQUEST:
       return {
@@ -25,5 +27,3 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default reducer;

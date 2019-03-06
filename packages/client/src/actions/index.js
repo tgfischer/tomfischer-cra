@@ -1,36 +1,35 @@
 import identity from "lodash/identity";
+import defaults from "lodash/defaults";
 
-const throwError = (dispatch, err, type) => {
-  dispatch({ type: `${type}_FAILURE`, err });
-  throw err;
-};
-
-export const apiAction = ({
-  type,
-  method,
-  body,
-  endpoint,
-  responseHandler = identity
-}) => async dispatch => {
-  dispatch({ type: `${type}_REQUEST` });
+export const apiAction = (method, endpoint, types, args) => async dispatch => {
+  const options = defaults(args, {
+    onSuccess: identity
+  });
+  const [request, success, failure] = types;
 
   try {
-    const rawResponse = await (await fetch(endpoint, {
+    dispatch({ type: request });
+    const rawResponse = await fetch(endpoint, {
       method,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: body ? JSON.stringify(body) : undefined,
+      body: options.body ? JSON.stringify(options.body) : undefined,
       mode: "cors"
-    })).json();
-    if (rawResponse.err) {
-      return throwError(dispatch, rawResponse.err, type);
+    });
+    const json = await rawResponse.json();
+
+    if (json.err) {
+      dispatch({ type: failure, err: json.err });
+      throw json.err;
     }
-    const response = responseHandler(rawResponse);
-    dispatch({ type: `${type}_SUCCESS`, response });
+
+    const response = options.onSuccess(json);
+    dispatch({ type: success, response });
     return response;
   } catch (err) {
-    throwError(dispatch, err, type);
+    dispatch({ type: failure, err });
+    throw err;
   }
 };

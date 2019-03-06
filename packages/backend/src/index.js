@@ -3,7 +3,7 @@ const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const middleware = require("tom-fischer-middleware");
+const middleware = require("@tomfischer/middleware");
 
 const education = require("./routes/education");
 const experience = require("./routes/experience");

@@ -7,7 +7,7 @@ import { paragraphs } from "./constants";
 const About = ({ classes }) => (
   <Page headline="About Myself" skinny>
     {paragraphs.map((paragraph, i) => (
-      <Typography key={i} variant="headline" align="justify" paragraph>
+      <Typography key={i} variant="h5" align="justify" paragraph>
         {paragraph}
       </Typography>
     ))}

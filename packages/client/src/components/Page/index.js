@@ -1,6 +1,11 @@
-import Loadable from "react-loadable";
+import React, { Suspense, lazy } from "react";
 
-export default Loadable({
-  loader: () => import("./Page"),
-  loading: () => null
-});
+import Loading from "../Loading";
+
+const Page = lazy(() => import("./Page"));
+
+export default props => (
+  <Suspense fallback={<Loading />}>
+    <Page {...props} />
+  </Suspense>
+);

@@ -1,32 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 
 import Experience from "../../components/Experience";
-import * as selectors from "./selectors";
-import { fetchJobs } from "./actions";
+import { useExperience } from "./hooks";
 
-class ExperienceContainer extends Component {
-  async componentDidMount() {
-    if (this.props.jobs) {
-      return;
-    }
+const ExperienceContainer = () => {
+  const [state] = useExperience();
+  return <Experience {...state} />;
+};
 
-    await this.props.fetchJobs();
-  }
-
-  render() {
-    return <Experience {...this.props} />;
-  }
-}
-
-const mapStateToProps = state => ({
-  jobs: selectors.getJobs(state),
-  isFetching: selectors.getIsFetching(state)
-});
-
-export default connect(
-  mapStateToProps,
-  {
-    fetchJobs
-  }
-)(ExperienceContainer);
+export default ExperienceContainer;

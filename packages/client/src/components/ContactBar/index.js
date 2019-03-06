@@ -23,9 +23,7 @@ const NavBar = ({ classes, email }) => (
         </Hidden>
         <Grid item sm={12} md={8}>
           <Grid container justify="flex-end" alignItems="center">
-            <Typography variant="body1" color="inherit">
-              email: {email}
-            </Typography>
+            <Typography color="inherit">email: {email}</Typography>
           </Grid>
         </Grid>
         <Hidden smDown>

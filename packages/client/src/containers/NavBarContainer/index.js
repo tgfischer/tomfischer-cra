@@ -1,14 +1,11 @@
-import { connect } from "react-redux";
+import React, { Suspense, lazy } from "react";
 
-import NavBar from "../../components/NavBar";
-import * as actions from "../SidebarContainer/actions";
+import Loading from "../../components/Loading";
 
-const mapDispatchToProps = dispatch => ({
-  openSidebar: () => dispatch(actions.openSidebar()),
-  closeSidebar: () => dispatch(actions.closeSidebar())
-});
+const NavBarContainer = lazy(() => import("./NavBarContainer"));
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(NavBar);
+export default props => (
+  <Suspense fallback={<Loading />}>
+    <NavBarContainer {...props} />
+  </Suspense>
+);

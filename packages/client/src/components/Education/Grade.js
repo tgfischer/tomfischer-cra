@@ -12,9 +12,9 @@ const styles = {
 
 const Grade = ({ classes, name, code, mark }) => (
   <Fragment>
-    <Typography variant="title">{name}</Typography>
-    <Typography variant="subheading">{code}</Typography>
-    <Typography variant="subheading">{`Mark: ${mark}%`}</Typography>
+    <Typography variant="h6">{name}</Typography>
+    <Typography variant="subtitle1">{code}</Typography>
+    <Typography variant="subtitle1">{`Mark: ${mark}%`}</Typography>
     <LinearProgress
       className={classes.progress}
       variant="determinate"

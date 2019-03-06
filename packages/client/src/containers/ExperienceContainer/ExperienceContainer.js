@@ -2,10 +2,10 @@ import React, { Suspense, lazy } from "react";
 
 import Loading from "../../components/Loading";
 
-const SidebarContainer = lazy(() => import("./SidebarContainer"));
+const ExperienceContainer = lazy(() => import("./ExperienceContainer"));
 
 export default props => (
   <Suspense fallback={<Loading />}>
-    <SidebarContainer {...props} />
+    <ExperienceContainer {...props} />
   </Suspense>
 );

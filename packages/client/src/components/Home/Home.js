@@ -52,14 +52,14 @@ const Home = ({ classes }) => (
               <Grid item xs={12}>
                 <Typography
                   className={classnames(classes.inverse, classes.header)}
-                  variant="display2"
+                  variant="h3"
                   align="center"
                 >
                   Welcome!
                 </Typography>
                 <Typography
                   className={classnames(classes.inverse, classes.headline)}
-                  variant="headline"
+                  variant="h5"
                   align="center"
                   color="inherit"
                 >
@@ -71,7 +71,7 @@ const Home = ({ classes }) => (
                 <Button
                   component={Link}
                   to="/about"
-                  variant="raised"
+                  variant="contained"
                   color="secondary"
                   size="large"
                 >

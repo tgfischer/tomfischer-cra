@@ -21,7 +21,7 @@ const Header = ({ classes, skinny, text }) => (
     <Grid className={classes.container} container>
       <Grid item xs sm />
       <Grid item xs={12} sm={12} md={skinny ? 6 : 8}>
-        <Typography variant="display2" color="inherit">
+        <Typography variant="h3" color="inherit">
           {text}
         </Typography>
       </Grid>
