@@ -6,9 +6,12 @@
   "description": "My portfolio website",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "deploy": "node ./scripts/deploy",
+    "destroy": "node ./scripts/destroy"
   },
   "devDependencies": {
-    "lerna": "^3.10.7"
+    "lerna": "^3.10.7",
+    "minimist": "^1.2.0",
+    "shelljs": "^0.8.3"
   }
 }
