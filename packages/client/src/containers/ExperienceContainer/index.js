@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 
-import Experience from "../../components/Experience";
-import { useExperience } from "./hooks";
+import Loading from "../../components/Loading";
 
-const ExperienceContainer = () => {
-  const [state] = useExperience();
-  return <Experience {...state} />;
-};
+const ExperienceContainer = lazy(() => import("./ExperienceContainer"));
 
-export default ExperienceContainer;
+export default props => (
+  <Suspense fallback={<Loading />}>
+    <ExperienceContainer {...props} />
+  </Suspense>
+);

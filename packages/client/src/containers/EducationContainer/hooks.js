@@ -1,13 +1,16 @@
-import { useReducer, useEffect } from "react";
+import { useEffect } from "react";
+import { useResource } from "react-request-hook";
+import get from "lodash/get";
 
-import { fetchTranscript } from "./actions";
-import reducer, { initialState } from "./reducer";
+import { backendEndpoint } from "../../constants";
 
 export const useEducation = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  useEffect(() => {
-    fetchTranscript(dispatch);
-  }, []);
+  const [{ data, isLoading }, getTranscript] = useResource(() => ({
+    method: "GET",
+    url: `${backendEndpoint}/api/education/transcript`
+  }));
 
-  return [state];
+  useEffect(() => void getTranscript(), []);
+  const transcript = get(data, "transcript") || [];
+  return [transcript, isLoading];
 };

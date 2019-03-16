@@ -10,7 +10,7 @@
     "destroy": "node ./scripts/destroy"
   },
   "devDependencies": {
-    "lerna": "^3.10.7",
+    "lerna": "^3.13.1",
     "minimist": "^1.2.0",
     "shelljs": "^0.8.3"
   }
