@@ -13,6 +13,7 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
+    "@tomfischer/eslint-config": "^1.0.6",
     "eslint": "^5.13.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -21,8 +22,8 @@
     "serverless-offline": "^4.2.2"
   },
   "dependencies": {
-    "@tomfischer/joi": "^1.0.2",
-    "@tomfischer/middleware": "^1.0.2",
+    "@tomfischer/joi": "^1.0.6",
+    "@tomfischer/middleware": "^1.0.6",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
