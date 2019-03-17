@@ -4,7 +4,6 @@
   "main": ".eslintrc.js",
   "author": "Tom Fischer",
   "license": "ISC",
-  "private": true,
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-prettier": "^4.0.0",

@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Joi validation schemas for Tom Fischer's projects",
   "main": "src/index.js",
-  "private": true,
   "scripts": {
     "test": "yarn test"
   },
