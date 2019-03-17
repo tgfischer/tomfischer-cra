@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "description": "My portfolio website",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "deploy": "node ./scripts/deploy",
     "destroy": "node ./scripts/destroy"
