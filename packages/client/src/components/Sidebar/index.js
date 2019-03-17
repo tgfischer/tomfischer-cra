@@ -7,7 +7,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-import * as constants from "../NavBar/constants";
+import * as constants from "../../constants";
 
 const styles = {
   list: {

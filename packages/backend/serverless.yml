@@ -21,6 +21,13 @@ functions:
           path: /api/education/transcript
           method: GET
           cors: true
+  projects:
+    handler: src/index.handler
+    events:
+      - http:
+          path: /api/projects
+          method: GET
+          cors: true
   jobs:
     handler: src/index.handler
     events:

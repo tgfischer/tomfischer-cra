@@ -1,5 +1,5 @@
 import React from "react";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -36,6 +36,9 @@ const styles = theme => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.2em"
     }
+  },
+  button: {
+    margin: theme.spacing.unit
   }
 });
 
@@ -63,19 +66,40 @@ const Home = ({ classes }) => (
                   align="center"
                   color="inherit"
                 >
-                  I am a Software Engineer from Waterloo. Click the button below
-                  to learn more about me
+                  I am a Software Engineer from Waterloo. Click one of the links
+                  below to see my experience
                 </Typography>
               </Grid>
               <Grid item>
                 <Button
                   component={Link}
-                  to="/about"
+                  className={classes.button}
+                  to="/education"
                   variant="contained"
                   color="secondary"
                   size="large"
                 >
-                  About Myself
+                  Education
+                </Button>
+                <Button
+                  component={Link}
+                  className={classes.button}
+                  to="/projects"
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                >
+                  Projects
+                </Button>
+                <Button
+                  component={Link}
+                  className={classes.button}
+                  to="/experience"
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                >
+                  Experience
                 </Button>
               </Grid>
             </Grid>
@@ -90,10 +114,11 @@ const Home = ({ classes }) => (
 );
 
 Home.propTypes = {
-  classes: PropType.shape({
-    container: PropType.string.isRequired,
-    paper: PropType.string.isRequired,
-    inverse: PropType.string.isRequired
+  classes: PropTypes.shape({
+    container: PropTypes.string.isRequired,
+    paper: PropTypes.string.isRequired,
+    inverse: PropTypes.string.isRequired,
+    button: PropTypes.string.isRequired
   }).isRequired
 };
 

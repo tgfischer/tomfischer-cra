@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import * as constants from "./constants";
+import * as constants from "../../constants";
 
 const styles = {
   flex: {
