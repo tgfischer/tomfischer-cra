@@ -19,6 +19,5 @@
     "serverless": "^1.37.0",
     "serverless-offline": "^4.2.2",
     "serverless-offline-dotenv": "^0.0.10"
-  },
-  "dependencies": {}
+  }
 }
