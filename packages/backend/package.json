@@ -1,6 +1,6 @@
 {
   "name": "@tomfischer/backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,8 @@
     "serverless-offline": "^4.2.2"
   },
   "dependencies": {
-    "@tomfischer/joi": "^1.0.0",
-    "@tomfischer/middleware": "^1.0.0",
+    "@tomfischer/joi": "^1.0.1",
+    "@tomfischer/middleware": "^1.0.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
