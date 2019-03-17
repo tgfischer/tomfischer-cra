@@ -6,7 +6,7 @@ import Page from "../Page";
 import Job from "./Job";
 
 const Experience = ({ isFetching, jobs }) => (
-  <Page isLoading={isFetching} headline="Experience" skinny>
+  <Page isLoading={isFetching} headline="Work Experience" skinny>
     <Grid container spacing={24}>
       {jobs.map(job => (
         <Grid key={job.id} item xs={12}>

@@ -11,15 +11,15 @@ export const pages = [
     name: "GitHub"
   },
   {
-    path: "/education",
-    name: "Education"
+    path: "/experience",
+    name: "Work Experience"
   },
   {
     path: "/projects",
     name: "Projects"
   },
   {
-    path: "/experience",
-    name: "Experience"
+    path: "/education",
+    name: "Education"
   }
 ];

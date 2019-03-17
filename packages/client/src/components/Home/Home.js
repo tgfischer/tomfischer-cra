@@ -74,12 +74,12 @@ const Home = ({ classes }) => (
                 <Button
                   component={Link}
                   className={classes.button}
-                  to="/education"
+                  to="/experience"
                   variant="contained"
                   color="secondary"
                   size="large"
                 >
-                  Education
+                  Work Experience
                 </Button>
                 <Button
                   component={Link}
@@ -94,12 +94,12 @@ const Home = ({ classes }) => (
                 <Button
                   component={Link}
                   className={classes.button}
-                  to="/experience"
+                  to="/education"
                   variant="contained"
                   color="secondary"
                   size="large"
                 >
-                  Experience
+                  Education
                 </Button>
               </Grid>
             </Grid>
